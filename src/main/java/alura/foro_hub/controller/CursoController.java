@@ -5,6 +5,7 @@ import alura.foro_hub.dto.curso.CursoDTO;
 import alura.foro_hub.dto.curso.RegistrarCursoDTO;
 import alura.foro_hub.entities.Curso;
 import alura.foro_hub.repository.CursoRepository;
+import alura.foro_hub.service.CursoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,33 +21,26 @@ import java.util.List;
 public class CursoController {
 
     @Autowired
-    private CursoRepository repository;
+    private CursoService service;
 
     @PostMapping
     public ResponseEntity registrarCurso(@RequestBody @Valid RegistrarCursoDTO datos, UriComponentsBuilder uriComponentsBuilder){
-        Curso curso = new Curso(datos);
-        curso = repository.save(curso);
-        //lo transformo a DTO
-        CursoDTO datosResponse = new CursoDTO(curso);
+        CursoDTO datosResponse = service.registrarCurso(datos);
         //creo la uri
-        URI url = uriComponentsBuilder.path("/cursos/{id}").buildAndExpand(curso.getId()).toUri();
-
+        URI url = uriComponentsBuilder.path("/cursos/{id}").buildAndExpand(datosResponse.id()).toUri();
         return ResponseEntity.created(url).body(datosResponse);
     }
 
     @GetMapping
     public ResponseEntity obtenerCursos(){
-        List<Curso> cursos = repository.findAll();
-        return ResponseEntity.ok(cursos.stream().map(CursoDTO::new).toList());
+        List<CursoDTO> datosResponse = service.listarCursos();
+        return ResponseEntity.ok(datosResponse);
     }
 
     @PutMapping
     @Transactional
     public ResponseEntity actualizarCurso(@RequestBody @Valid ActualizarCursoDTO datos){
-        Curso curso = repository.getReferenceById(datos.id());
-
-        curso.actualizarDatos(datos);
-        CursoDTO datosResponse = new CursoDTO(curso);
+        CursoDTO datosResponse = service.actualizarCurso(datos);
 
         return ResponseEntity.ok(datosResponse);
     }
@@ -54,10 +48,8 @@ public class CursoController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity eliminarCurso(@PathVariable Long id){
-        Curso curso = repository.getReferenceById(id);
-        curso.eliminarCurso();
+        service.eliminarCurso(id);
         return ResponseEntity.noContent().build();
-
     }
 
 
