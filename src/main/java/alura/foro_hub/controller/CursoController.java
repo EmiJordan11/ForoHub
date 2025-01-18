@@ -3,8 +3,6 @@ package alura.foro_hub.controller;
 import alura.foro_hub.dto.curso.ActualizarCursoDTO;
 import alura.foro_hub.dto.curso.CursoDTO;
 import alura.foro_hub.dto.curso.RegistrarCursoDTO;
-import alura.foro_hub.entities.Curso;
-import alura.foro_hub.repository.CursoRepository;
 import alura.foro_hub.service.CursoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +49,6 @@ public class CursoController {
         service.eliminarCurso(id);
         return ResponseEntity.noContent().build();
     }
-
 
 
 }

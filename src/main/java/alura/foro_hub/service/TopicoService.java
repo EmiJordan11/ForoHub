@@ -59,7 +59,7 @@ public class TopicoService {
         return new TopicoDTO(topico);
     }
 
-
+    //DELETE
     public void eliminarTopico(Long id) {
         Topico topico = topicoRepository.getReferenceById(id);
         //setteo la fecha de baja con fecha actual

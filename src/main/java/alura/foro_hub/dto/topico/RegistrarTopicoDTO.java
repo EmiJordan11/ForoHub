@@ -1,5 +1,6 @@
 package alura.foro_hub.dto.topico;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,6 +12,7 @@ public record RegistrarTopicoDTO(
         @NotBlank
         String mensaje,
         @NotNull
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
         LocalDateTime fechaCreacion,
         @NotNull
         Long idAutor,

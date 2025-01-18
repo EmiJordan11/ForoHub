@@ -3,8 +3,6 @@ package alura.foro_hub.controller;
 import alura.foro_hub.dto.topico.ActualizarTopicoDTO;
 import alura.foro_hub.dto.topico.RegistrarTopicoDTO;
 import alura.foro_hub.dto.topico.TopicoDTO;
-import alura.foro_hub.dto.usuario.RegistrarUsuarioDTO;
-import alura.foro_hub.entities.Topico;
 import alura.foro_hub.service.TopicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
