@@ -2,5 +2,5 @@ CREATE TABLE Curso(
     id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nombre VARCHAR(100) NOT NULL UNIQUE,
     categoria VARCHAR(60) NOT NULL,
-    fecha_hoja_baja DATETIME
+    fecha_hora_baja DATETIME
 );
