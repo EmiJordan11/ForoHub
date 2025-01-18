@@ -1,0 +1,7 @@
+CREATE TABLE Usuario(
+    id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(60) NOT NULL UNIQUE,
+    contrasena VARCHAR(100) NOT NULL,
+    fecha_hoja_baja DATETIME
+)
