@@ -6,9 +6,11 @@ import alura.foro_hub.dto.topico.TopicoDTO;
 import alura.foro_hub.entities.Curso;
 import alura.foro_hub.entities.Topico;
 import alura.foro_hub.entities.Usuario;
+import alura.foro_hub.infra.errors.ValidacionException;
 import alura.foro_hub.repository.CursoRepository;
 import alura.foro_hub.repository.TopicoRepository;
 import alura.foro_hub.repository.UsuarioRepository;
+import jakarta.xml.bind.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,13 +43,13 @@ public class TopicoService {
 
     //GET
     public List<TopicoDTO> listarTopicos(){
-        List<Topico> topicos = topicoRepository.findAll();
+        List<Topico> topicos = topicoRepository.findByFechaHoraBajaIsNull();
         return topicos.stream().map(TopicoDTO::new).toList();
     }
 
     //PUT
     public TopicoDTO actualizarTopico(ActualizarTopicoDTO datos){
-        Topico topico = topicoRepository.getReferenceById(datos.id());
+        Topico topico = validarTopico(datos.id());
 
         if (datos.titulo()!=null && !datos.titulo().isBlank()){
             topico.setTitulo(datos.titulo());
@@ -61,8 +63,20 @@ public class TopicoService {
 
     //DELETE
     public void eliminarTopico(Long id) {
-        Topico topico = topicoRepository.getReferenceById(id);
+        Topico topico = validarTopico(id);
         //setteo la fecha de baja con fecha actual
         topico.setFechaHoraBaja(LocalDateTime.now());
     }
+
+    //Validar Topico
+    public Topico validarTopico(Long id){
+        Topico topico = topicoRepository.getReferenceById(id);
+
+        if (topico.getFechaHoraBaja()!=null){
+            throw new ValidacionException("El tópico seleccionado ya no existe");
+        }
+
+        return topico;
+    }
+
 }

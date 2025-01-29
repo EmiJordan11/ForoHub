@@ -25,6 +25,14 @@ public class TratadorDeErrores {
         return ResponseEntity.badRequest().body(errores);
     }
 
+    @ExceptionHandler(ValidacionException.class)
+    public ResponseEntity largarErrorDeValidacion(ValidacionException e){
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+
+
+
 
 
     //DTO
