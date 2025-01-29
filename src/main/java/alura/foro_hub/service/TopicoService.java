@@ -4,10 +4,12 @@ import alura.foro_hub.dto.topico.ActualizarTopicoDTO;
 import alura.foro_hub.dto.topico.RegistrarTopicoDTO;
 import alura.foro_hub.dto.topico.TopicoDTO;
 import alura.foro_hub.entities.Curso;
+import alura.foro_hub.entities.Respuesta;
 import alura.foro_hub.entities.Topico;
 import alura.foro_hub.entities.Usuario;
 import alura.foro_hub.infra.errors.ValidacionException;
 import alura.foro_hub.repository.CursoRepository;
+import alura.foro_hub.repository.RespuestaRepository;
 import alura.foro_hub.repository.TopicoRepository;
 import alura.foro_hub.repository.UsuarioRepository;
 import jakarta.xml.bind.ValidationException;
@@ -28,6 +30,9 @@ public class TopicoService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private RespuestaRepository respuestaRepository;
 
     //POST
     public TopicoDTO registrarTopico(RegistrarTopicoDTO datos){
@@ -66,6 +71,12 @@ public class TopicoService {
         Topico topico = validarTopico(id);
         //setteo la fecha de baja con fecha actual
         topico.setFechaHoraBaja(LocalDateTime.now());
+
+        //setteo la fecha de baja a cada respuesta de este tópico
+        List<Respuesta> respuestas = respuestaRepository.findByTopicoIdAndFechaHoraBajaIsNull(id);
+        for (Respuesta respuesta : respuestas){
+            respuesta.setFechaHoraBaja(LocalDateTime.now());
+        }
     }
 
     //Validar Topico
