@@ -1,6 +1,8 @@
 package alura.foro_hub.entities;
 
+import alura.foro_hub.dto.usuario.SingUpUsuarioDTO;
 import jakarta.persistence.Entity;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,13 @@ public class Usuario extends EntidadBase implements UserDetails {
     private String nombre;
     private String email;
     private String contrasena;
+
+    public Usuario(SingUpUsuarioDTO datos) {
+        this.nombre = datos.nombre();
+        this.email = datos.email();
+        this.contrasena = datos.contrasena();
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
