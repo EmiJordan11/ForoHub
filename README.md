@@ -5,7 +5,6 @@
   </h2>
 </div> 
 
-[//]: # (# 🌐 ForoHub - Backend Challenge)
 ## 📖 Descripción
 **ForoHub** es un proyecto de Backend desarrollado con Java y Spring Boot como parte **Backend Challenge** en la formación de Desarrollador Backend de Alura Latam con Oracle. Este proyecto ofrece una API REST con operaciones CRUD (CREATE, READ, UPDATE, DELETE) para gestionar foros de discusión. La seguridad de la aplicación está gestionada utilizando Spring Security y JWT (JSON Web Tokens).
 

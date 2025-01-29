@@ -1,5 +1,6 @@
 package alura.foro_hub.entities;
 
+import alura.foro_hub.dto.respuesta.RegistrarRespuestaDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,15 @@ public class Respuesta extends EntidadBase{
     @ManyToOne
     private Topico topico;
     @ManyToOne
-    private Respuesta respuestaPadre;
+    private Respuesta respuesta;
     @ManyToOne
     private Usuario autor;
+
+
+    public Respuesta(RegistrarRespuestaDTO datos, Topico topico, Usuario autor) {
+        this.mensaje = datos.mensaje();
+        this.fechaCreacion = LocalDateTime.now();
+        this.topico = topico;
+        this.autor = autor;
+    }
 }
