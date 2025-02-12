@@ -27,10 +27,10 @@
 La aplicación ha sido desplegada en **Render** y la base de datos se encuentra alojada en **Railway**.
 
 🔗 **API Base URL:**  
-[https://foro-hub.onrender.com](https://foro-hub.onrender.com)
+[https://forohub.onrender.com](https://forohub.onrender.com/)
 
-🔗 **Documentación Swagger:**  
-[https://foro-hub.onrender.com/swagger-ui/index.html](https://foro-hub.onrender.com/swagger-ui/index.html)
+📄 **Accede a la documentación interactiva en Swagger:**
+[Ver documentación](https://forohub.onrender.com/swagger-ui/index.html#/)
 
 > [!WARNING]
 > 
