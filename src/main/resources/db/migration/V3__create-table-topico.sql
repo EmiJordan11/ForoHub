@@ -7,6 +7,6 @@ CREATE TABLE topico(
     curso_id BIGINT NOT NULL,
     fecha_hora_baja DATETIME,
 
-    FOREIGN KEY(autor_id) REFERENCES Usuario(id),
-    FOREIGN KEY(curso_id) REFERENCES Curso(id)
+    FOREIGN KEY(autor_id) REFERENCES usuario(id),
+    FOREIGN KEY(curso_id) REFERENCES curso(id)
 );

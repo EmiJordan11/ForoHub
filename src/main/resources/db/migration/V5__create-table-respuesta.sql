@@ -7,7 +7,7 @@ CREATE TABLE respuesta(
     respuesta_id BIGINT,
     fecha_hora_baja DATETIME,
 
-    FOREIGN KEY(topico_id) REFERENCES Topico(id),
-    FOREIGN KEY(autor_id) REFERENCES Usuario(id),
-    FOREIGN KEY(respuesta_id) REFERENCES Respuesta(id)
+    FOREIGN KEY(topico_id) REFERENCES topico(id),
+    FOREIGN KEY(autor_id) REFERENCES usuario(id),
+    FOREIGN KEY(respuesta_id) REFERENCES respuesta(id)
 );
