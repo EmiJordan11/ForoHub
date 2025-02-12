@@ -20,7 +20,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Usuario")
 public class Usuario extends EntidadBase implements UserDetails {
     private String nombre;
     private String email;

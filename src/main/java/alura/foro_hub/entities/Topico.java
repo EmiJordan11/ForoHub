@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Topico")
 public class Topico extends EntidadBase {
     private String titulo;
     private String mensaje;

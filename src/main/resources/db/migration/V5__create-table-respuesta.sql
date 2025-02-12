@@ -1,4 +1,4 @@
-CREATE TABLE Respuesta(
+CREATE TABLE respuesta(
     id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     mensaje VARCHAR(800) NOT NULL,
     fecha_creacion DATETIME NOT NULL,

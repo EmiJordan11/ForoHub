@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Respuesta")
 public class Respuesta extends EntidadBase{
     private String mensaje;
     private LocalDateTime fechaCreacion;
