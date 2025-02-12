@@ -12,9 +12,6 @@ public record RegistrarTopicoDTO(
         @NotBlank
         String mensaje,
         @NotNull
-        @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-        LocalDateTime fechaCreacion,
-        @NotNull
         Long idAutor,
         @NotNull
         Long idCurso

@@ -3,6 +3,7 @@ package alura.foro_hub.service;
 import alura.foro_hub.dto.respuesta.ActualizarRespuestaDTO;
 import alura.foro_hub.dto.respuesta.RegistrarRespuestaDTO;
 import alura.foro_hub.dto.respuesta.RespuestaDTO;
+import alura.foro_hub.dto.respuesta.SubRespuestaDTO;
 import alura.foro_hub.entities.Respuesta;
 import alura.foro_hub.entities.Topico;
 import alura.foro_hub.entities.Usuario;
@@ -32,6 +33,9 @@ public class RespuestaService {
     @Autowired
     private TopicoService topicoService;
 
+    // --------------------------------------------------------------------------------------------------------------
+    //    -- RESPUESTA --
+
     //POST
     public RespuestaDTO registrarRespuesta(Long topicoId, RegistrarRespuestaDTO datos) {
         Topico topico = topicoService.validarTopico(topicoId);
@@ -51,8 +55,7 @@ public class RespuestaService {
     }
 
     //PUT
-    public RespuestaDTO actualizarRespuesta(Long idTopico, Long id, @Valid ActualizarRespuestaDTO datos) {
-        Topico topico = topicoService.validarTopico(idTopico);
+    public RespuestaDTO actualizarRespuesta(ActualizarRespuestaDTO datos, Long id) {
         Respuesta respuesta = validarRespuesta(id);
 
         respuesta.setMensaje(datos.mensaje());
@@ -61,11 +64,42 @@ public class RespuestaService {
     }
 
     //DELETE
-    public void eliminarRespuesta(Long idTopico, Long id) {
-        Topico topico = topicoService.validarTopico(idTopico);
+    public void eliminarRespuesta(Long id) {
         Respuesta respuesta = validarRespuesta(id);
         respuesta.setFechaHoraBaja(LocalDateTime.now());
     }
+
+    // --------------------------------------------------------------------------------------------------------------
+    //    -- SUBRESPUESTA --
+    //POST
+    public SubRespuestaDTO registrarSubRespuesta(RegistrarRespuestaDTO datos, Long idRespuesta) {
+        Respuesta respuesta = validarRespuesta(idRespuesta);
+        Usuario autor = usuarioRepository.getReferenceById(datos.idAutor());
+
+        //creo la subrespuesta
+        Respuesta subrespuesta = new Respuesta(datos, autor, respuesta);
+        respuestaRepository.save(subrespuesta);
+
+        return new SubRespuestaDTO(subrespuesta);
+    }
+
+    //GET
+    public List<SubRespuestaDTO> obtenerSubRespuestas(Long idRespuesta) {
+        Respuesta respuestaPadre = validarRespuesta(idRespuesta);
+        List<Respuesta> subrespuestas = respuestaRepository.findByRespuestaIdAndFechaHoraBajaIsNull(respuestaPadre.getId());
+
+        return subrespuestas.stream().map(SubRespuestaDTO::new).toList();
+    }
+
+    //PUT
+    public SubRespuestaDTO actualizarSubRespuesta(ActualizarRespuestaDTO datos ,Long idSubRespuesta) {
+        Respuesta subrespuesta = validarRespuesta(idSubRespuesta);
+        subrespuesta.setMensaje(datos.mensaje());
+
+        return new SubRespuestaDTO(subrespuesta);
+    }
+
+
 
     //Validar
     public Respuesta validarRespuesta(Long idRespuesta) {

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RespuestaRepository extends JpaRepository<Respuesta, Long> {
     List<Respuesta> findByTopicoIdAndFechaHoraBajaIsNull(Long idTopico);
+    List<Respuesta> findByRespuestaIdAndFechaHoraBajaIsNull(Long idRespuesta);
 }

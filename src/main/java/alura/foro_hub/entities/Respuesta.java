@@ -33,4 +33,13 @@ public class Respuesta extends EntidadBase{
         this.topico = topico;
         this.autor = autor;
     }
+
+    public Respuesta(RegistrarRespuestaDTO datos, Usuario autor, Respuesta respuesta) {
+        this.mensaje = datos.mensaje();
+        this.fechaCreacion = LocalDateTime.now();
+        this.topico = respuesta.getTopico(); //el mismo topico que la rta padre
+        this.respuesta = respuesta;
+        this.autor = autor;
+    }
+
 }

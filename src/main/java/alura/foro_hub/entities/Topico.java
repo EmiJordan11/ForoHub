@@ -28,7 +28,7 @@ public class Topico extends EntidadBase {
     public Topico(RegistrarTopicoDTO datos, Usuario autor, Curso curso) {
         this.titulo = datos.titulo();
         this.mensaje = datos.mensaje();
-        this.fechaCreacion = datos.fechaCreacion();
+        this.fechaCreacion = LocalDateTime.now();
         this.autor = autor;
         this.curso = curso;
     }
