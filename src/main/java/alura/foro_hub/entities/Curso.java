@@ -3,6 +3,7 @@ package alura.foro_hub.entities;
 import alura.foro_hub.dto.curso.ActualizarCursoDTO;
 import alura.foro_hub.dto.curso.RegistrarCursoDTO;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Curso")
 public class Curso extends EntidadBase{
     private String nombre;
     private String categoria;

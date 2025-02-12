@@ -3,6 +3,7 @@ package alura.foro_hub.entities;
 import alura.foro_hub.dto.topico.RegistrarTopicoDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Topico")
 public class Topico extends EntidadBase {
     private String titulo;
     private String mensaje;

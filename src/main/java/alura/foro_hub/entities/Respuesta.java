@@ -3,6 +3,7 @@ package alura.foro_hub.entities;
 import alura.foro_hub.dto.respuesta.RegistrarRespuestaDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Respuesta")
 public class Respuesta extends EntidadBase{
     private String mensaje;
     private LocalDateTime fechaCreacion;

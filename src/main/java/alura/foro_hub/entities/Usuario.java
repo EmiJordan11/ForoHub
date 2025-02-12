@@ -2,6 +2,7 @@ package alura.foro_hub.entities;
 
 import alura.foro_hub.dto.usuario.SingUpUsuarioDTO;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "Usuario")
 public class Usuario extends EntidadBase implements UserDetails {
     private String nombre;
     private String email;
