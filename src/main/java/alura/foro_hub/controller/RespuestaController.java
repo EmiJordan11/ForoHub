@@ -55,9 +55,11 @@ public class RespuestaController {
 
 //    -- SUBRESPUESTA --
     @PostMapping("respuestas/{idRespuesta}/subrespuestas")
-    public ResponseEntity registrarSubRespuesta(@RequestBody @Valid RegistrarRespuestaDTO datos, @PathVariable Long idRespuesta){
+    public ResponseEntity registrarSubRespuesta(@RequestBody @Valid RegistrarRespuestaDTO datos, @PathVariable Long idRespuesta, UriComponentsBuilder uriComponentsBuilder){
         SubRespuestaDTO datosResponse = service.registrarSubRespuesta(datos, idRespuesta);
-        return ResponseEntity.ok(datosResponse);
+        URI url = uriComponentsBuilder.path("respuestas/{idRespuesta}/subrespuestas/{id}")
+                .buildAndExpand(idRespuesta, datosResponse.id()).toUri();
+        return ResponseEntity.created(url).body(datosResponse);
     }
 
     @GetMapping("/respuestas/{idRespuesta}/subrespuestas")
