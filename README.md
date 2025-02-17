@@ -1,11 +1,9 @@
 <div align="center">
   <img src="./src/main/resources/img/badge-forohub.png" alt="Logo" height="100">
-  <h2>
+  <h1>
     🌐 Foro Hub - Backend Challenge
-  </h2>
+  </h1>
 </div>
-
-# 🌐 ForoHub - Backend Challenge
 
 ## 📚 Índice
 1. [📖 Descripción](#-descripción)
@@ -57,16 +55,19 @@ Para realizar pruebas en **Postman** u otra herramienta de API, puedes usar esta
 ---
 
 ## ⚙️ Tecnologías utilizadas
-[![Tecnologias](https://skillicons.dev/icons?i=java,spring,mysql,maven,idea,git)](https://skillicons.dev)
 
+[![Tecnologias](https://skillicons.dev/icons?i=java,spring,postgres,maven,idea,git,supabase)](https://skillicons.dev)
+[![Tecnologias](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTguMjYzLjAwN2MtMy4xMjEtLjE0Ny01Ljc0NCAyLjEwOS02LjE5MiA1LjA4MmMtLjAxOC4xMzgtLjA0NS4yNzItLjA2Ny40MDVjLS42OTYgMy43MDMtMy45MzYgNi41MDctNy44MjcgNi41MDdhNy45IDcuOSAwIDAgMS0zLjgyNS0uOTc5YS4yMDIuMjAyIDAgMCAwLS4zMDIuMTc4VjI0SDEydi04Ljk5OWMwLTEuNjU2IDEuMzM4LTMgMi45ODctM2gyLjk4OGMzLjM4MiAwIDYuMTAzLTIuODE3IDUuOTctNi4yNDRjLS4xMi0zLjA4NC0yLjYxLTUuNjAzLTUuNjgyLTUuNzUiLz48L3N2Zz4=)](https://skillicons.dev)
 - **Java 17** o superior
 - **Spring Boot 3.x**
 - **Spring Security** (Autenticación y Autorización)
 - **Spring Data JPA** (Gestión de base de datos)
 - **JWT (Java JWT)** (Tokens de seguridad)
 - **Flyway** (Migraciones de base de datos)
-- **MySQL** (Base de datos relacional)
+- **PostgreSQL** (Base de datos relacional)
 - **Springdoc OpenAPI** (Documentación de API con Swagger)
+- **Supabase** (Alojamiento de la base de datos)
+- **Render** (Deployment del proyecto)
 
 ---
 
