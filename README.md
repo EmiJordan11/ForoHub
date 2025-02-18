@@ -71,7 +71,7 @@ Para realizar pruebas en **Postman** u otra herramienta de API, puedes usar esta
 ## ⚙️ Tecnologías utilizadas
 
 [![Tecnologias](https://skillicons.dev/icons?i=java,spring,postgres,maven,idea,git,supabase)](https://skillicons.dev)
-<img src="./src/main/resources/img/render.png" alt="Logo" height="50">
+<img src="./src/main/resources/img/render.png" alt="Logo" height="48">
 
 - **Java 17**
 - **Spring Boot 3.x**
